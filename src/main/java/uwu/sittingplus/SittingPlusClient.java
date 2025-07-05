@@ -26,6 +26,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
@@ -42,7 +43,7 @@ public class SittingPlusClient implements ClientModInitializer {
     private static final Identifier[] ANIM_SWORDS = new Identifier[]{ Identifier.of("sittingplus", "swordsit"), Identifier.of("sittingplus", "swordsit2") };
     private static final Identifier[] ANIM_AXE = new Identifier[]{ Identifier.of("sittingplus", "sittingaxe") };
     private static final Identifier[] ANIM_SHOVEL = new Identifier[]{ Identifier.of("sittingplus", "sittingshovel") };
-    private static final Identifier[] ANIM_FISHINGROD = new Identifier[]{ Identifier.of("sittingplus", "fishing") };
+    private static final Identifier[] ANIM_FISHING_ROD = new Identifier[]{ Identifier.of("sittingplus", "fishing") };
     private static KeyBinding sitKey;
     private static KeyframeAnimationPlayer sitAnimationPlayer;
     private static Perspective previousPerspective = null;
@@ -166,7 +167,7 @@ public class SittingPlusClient implements ClientModInitializer {
         Vec3d eye = player.getEyePos();
         Vec3d dir = player.getRotationVector().multiply(2.0);
         BlockHitResult tr = player.clientWorld.raycast(new RaycastContext(eye, eye.add(dir), ShapeType.OUTLINE, FluidHandling.NONE, player));
-        if (tr.getType() == net.minecraft.util.hit.HitResult.Type.BLOCK) {
+        if (tr.getType() == HitResult.Type.BLOCK) {
             Block block = player.clientWorld.getBlockState(tr.getBlockPos()).getBlock();
             if (block instanceof CampfireBlock) {
                 this.playAnimation(stack, new Identifier[]{ Identifier.of("sittingplus", "campfiresit") });
@@ -190,12 +191,12 @@ public class SittingPlusClient implements ClientModInitializer {
         } else if (heldItem instanceof ShovelItem) {
             this.playAnimation(stack, ANIM_SHOVEL);
         } else if (heldItem instanceof FishingRodItem) {
-            this.playAnimation(stack, ANIM_FISHINGROD);
+            this.playAnimation(stack, ANIM_FISHING_ROD);
         } else {
             Vec3d start = player.getPos();
             Vec3d end = start.subtract(0.0, 1.5, 0.0);
             BlockHitResult result = player.clientWorld.raycast(new RaycastContext(start, end, ShapeType.COLLIDER, FluidHandling.NONE, player));
-            if (result.getType() == net.minecraft.util.hit.HitResult.Type.BLOCK) {
+            if (result.getType() == HitResult.Type.BLOCK) {
                 Block targetBlock = player.clientWorld.getBlockState(result.getBlockPos()).getBlock();
                 if (targetBlock instanceof StairsBlock) {
                     this.playAnimation(stack, ANIM_STAIRS);
@@ -252,6 +253,9 @@ public class SittingPlusClient implements ClientModInitializer {
             if (current == Perspective.FIRST_PERSON) {
                 previousPerspective = current;
                 opts.setPerspective(Perspective.THIRD_PERSON_BACK);
+            } else if (current == Perspective.THIRD_PERSON_FRONT) {
+                // Fix annoying perspective issue
+                previousPerspective = null;
             }
         }
     }
