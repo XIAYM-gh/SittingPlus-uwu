@@ -1,4 +1,4 @@
-package com.saltywater.sittingplus;
+package uwu.sittingplus;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

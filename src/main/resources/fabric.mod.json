@@ -6,11 +6,12 @@
   "license": "unlicense",
   "environment": "CLIENT",
   "depends": {
-    "minecraft": "${minecraft_version}"
+    "minecraft": "${minecraft_version}",
+    "playeranimator": "*"
   },
   "entrypoints": {
     "client": [
-      "com.saltywater.sittingplus.SittingPlusClient"
+      "uwu.sittingplus.SittingPlusClient"
     ]
   }
 }

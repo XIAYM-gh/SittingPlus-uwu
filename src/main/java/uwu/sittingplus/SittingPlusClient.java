@@ -1,4 +1,4 @@
-package com.saltywater.sittingplus;
+package uwu.sittingplus;
 
 import dev.kosmx.playerAnim.api.layered.AnimationStack;
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
