@@ -238,7 +238,9 @@ public class SittingPlusClient implements ClientModInitializer {
         if (sitAnimationPlayer != null) {
             stack.removeLayer(0);
             sitAnimationPlayer = null;
-            if (SittingPlusConfig.getConfig().enableThirdPersonOnSit && previousPerspective != null) {
+            if (SittingPlusConfig.getConfig().enableThirdPersonOnSit
+                    && previousPerspective != null
+                    && MinecraftClient.getInstance().options.getPerspective() == Perspective.THIRD_PERSON_BACK) {
                 MinecraftClient.getInstance().options.setPerspective(previousPerspective);
             }
 
