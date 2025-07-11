@@ -7,11 +7,18 @@
   "environment": "CLIENT",
   "depends": {
     "minecraft": "${minecraft_version}",
+    "fabric-api": "*",
     "playeranimator": "*"
   },
   "entrypoints": {
+    "main": [
+      "uwu.sittingplus.SittingPlusInitializer"
+    ],
     "client": [
-      "uwu.sittingplus.SittingPlusClient"
+      "uwu.sittingplus.client.SittingPlusClient"
     ]
-  }
+  },
+  "mixins": [
+    "sittingplus-uwu.mixins.json"
+  ]
 }

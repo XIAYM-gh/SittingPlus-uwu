@@ -1,4 +1,4 @@
-package uwu.sittingplus;
+package uwu.sittingplus.client;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import net.fabricmc.loader.api.FabricLoader;
 
-public class SittingPlusConfig {
+public class ClientConfig {
    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
    private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("SittingPlusConfig.json");
    public boolean enableClickToSit = true;
@@ -17,11 +17,11 @@ public class SittingPlusConfig {
    public boolean onlyLowerCameraInFirstPerson = false;
    public boolean enableAfkSit = true;
    public int afkSitDelaySeconds = 60;
-   private static SittingPlusConfig instance;
+   private static ClientConfig instance;
 
-   public static SittingPlusConfig getConfig() {
+   public static ClientConfig getConfig() {
       if (instance == null) {
-         instance = new SittingPlusConfig();
+         instance = new ClientConfig();
          instance.loadConfig();
       }
 
@@ -31,7 +31,7 @@ public class SittingPlusConfig {
    private void loadConfig() {
       if (Files.exists(CONFIG_PATH)) {
          try (Reader reader = Files.newBufferedReader(CONFIG_PATH)) {
-            SittingPlusConfig loaded = GSON.fromJson(reader, SittingPlusConfig.class);
+            ClientConfig loaded = GSON.fromJson(reader, ClientConfig.class);
             if (loaded != null) {
                this.enableClickToSit = loaded.enableClickToSit;
                this.enableThirdPersonOnSit = loaded.enableThirdPersonOnSit;
