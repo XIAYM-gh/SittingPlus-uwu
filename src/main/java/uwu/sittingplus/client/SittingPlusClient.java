@@ -81,7 +81,7 @@ public class SittingPlusClient implements ClientModInitializer {
         ClientPlayNetworking.registerGlobalReceiver(HelloV1S2CPayload.ID, (payload, context) -> {
             assert CLIENT.player != null;
             if (payload.protocolVersion() != Constants.PROTOCOL_VERSION) {
-                CLIENT.player.sendMessage(Text.literal("The server incompatible with your version of SittingPlus-uwu, disabling synchronization. (Server: %s, Expected: %s).".formatted(payload.protocolVersion(), Constants.PROTOCOL_VERSION))
+                CLIENT.player.sendMessage(Text.translatable("message.sittingplus.incompatible_server", payload.protocolVersion(), Constants.PROTOCOL_VERSION)
                         .withColor(Colors.LIGHT_GRAY), false);
                 return;
             }

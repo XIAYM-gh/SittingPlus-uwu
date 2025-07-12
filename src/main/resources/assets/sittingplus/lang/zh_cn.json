@@ -1,0 +1,5 @@
+{
+  "category.sittingplus": "SittingPlus-uwu",
+  "key.sittingplus.sit": "坐下",
+  "message.sittingplus.incompatible_server": "服务器与您安装的 SittingPlus-uwu 版本不符，同步已禁用。 (服务器：%s, 预期：%s)"
+}
