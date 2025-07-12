@@ -1,5 +1,5 @@
 {
   "category.sittingplus": "SittingPlus-uwu",
   "key.sittingplus.sit": "Sit Down",
-  "message.sittingplus.incompatible_server": "The server is incompatible with your version of SittingPlus-uwu, disabling synchronization. (Server: %s, Expected: %s)"
+  "message.sittingplus.incompatible_server": "The server has installed a mismatch version of SittingPlus-uwu, disabling synchronization. (Server: %s, Expected: %s)"
 }
