@@ -1,6 +1,6 @@
 # SittingPlus-uwu
 
-A client-side mod that provides many sitting animations.
+A fabric mod that provides many sitting animations.
 
 ## Information
 
@@ -8,10 +8,12 @@ This project is built on the base of a decompiled mod, and enhances its function
 
 In order to run this mod, you need:
 
-- Firstly build this mod yourself
+- Download from releases or build this mod yourself
 - Dependency: `playeranimator`
 - Minecraft: `1.21.4`
 - Fabric Loader
+
+You can also refer to the [[Official Bukkit Protocol Plugin]](https://github.com/XIAYM-gh/SittingPlus-uwu-Bukkit).
 
 ## Building
 
